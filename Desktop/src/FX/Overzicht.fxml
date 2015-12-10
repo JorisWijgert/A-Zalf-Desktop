@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1179.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ListView id="lvAfspraken" fx:id="lvAfspraken" layoutX="26.0" layoutY="75.0" prefHeight="568.0" prefWidth="290.0" />
+      <Label layoutX="113.0" layoutY="36.0" text="Afspraken">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextArea id="taInformatie" fx:id="taInformatie" disable="true" layoutX="370.0" layoutY="75.0" prefHeight="408.0" prefWidth="369.0" />
+      <Label layoutX="511.0" layoutY="36.0" prefHeight="29.0" prefWidth="116.0" text="Informatie">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextArea id="taVolgendeAfspraak" fx:id="taVolgendeAfspraak" layoutX="803.0" layoutY="75.0" prefHeight="60.0" prefWidth="354.0" />
+      <Label layoutX="871.0" layoutY="36.0" prefHeight="29.0" prefWidth="219.0" text="Volgende afspraak">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextArea id="taDiagnose" fx:id="taDiagnose" layoutX="801.0" layoutY="198.0" prefHeight="450.0" prefWidth="354.0" />
+      <Label layoutX="920.0" layoutY="160.0" prefHeight="29.0" prefWidth="116.0" text="Diagnose">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextArea disable="true" layoutX="365.0" layoutY="509.0" prefHeight="135.0" prefWidth="380.0" />
+      <ImageView id="ivFotoDichtbij" fx:id="ivFotoDichtbij" fitHeight="121.0" fitWidth="171.0" layoutX="370.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView id="ivFotoVeraf" fx:id="ivFotoVeraf" fitHeight="121.0" fitWidth="171.0" layoutX="568.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
+      <Button id="btVolgende" fx:id="btVolgende" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" text="Volgende Patiënt" />
+      <Button layoutX="1084.0" layoutY="656.0" mnemonicParsing="false" text="Verstuur" />
+   </children>
+</AnchorPane>
