@@ -18,8 +18,7 @@ public class Administratie {
     private Image image;
     
     public void setup() {
-        overzichtController = new OverzichtController();
-        
+        overzichtController = new OverzichtController();      
         overzichtController.setIvFotoDichtbij(kiesImage("Dichtbij"));
     }
     
