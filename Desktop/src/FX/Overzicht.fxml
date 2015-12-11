@@ -36,6 +36,6 @@
       <ImageView id="ivFotoDichtbij" fx:id="ivFotoDichtbij" fitHeight="121.0" fitWidth="171.0" layoutX="370.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView id="ivFotoVeraf" fx:id="ivFotoVeraf" fitHeight="121.0" fitWidth="171.0" layoutX="568.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
       <Button id="btVolgende" fx:id="btVolgende" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" text="Volgende Patiënt" />
-      <Button layoutX="1084.0" layoutY="656.0" mnemonicParsing="false" text="Verstuur" />
+      <Button id="btVerstuur" fx:id="btVerstuur" layoutX="1084.0" layoutY="656.0" mnemonicParsing="false" text="Verstuur" />
    </children>
 </AnchorPane>
