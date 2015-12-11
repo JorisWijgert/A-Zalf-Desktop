@@ -23,7 +23,7 @@ public class OverzichtController {
     @FXML
     ImageView ivFotoDichtbij, ivFotoVeraf;
     @FXML
-    Button btVolgende;
+    Button btVolgende, btVerstuur;
 
     @FXML
     public void volgende(){
