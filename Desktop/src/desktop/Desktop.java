@@ -5,15 +5,12 @@
  */
 package desktop;
 
+import collection.Administratie;
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -29,10 +26,11 @@ public class Desktop extends Application {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
         Scene scene = new Scene(root);
 
-        //stage.getIcons().add(new Image(getClass().getResourceAsStream("forms/icon.png")));
         primaryStage.setTitle("Overzicht");
         primaryStage.setScene(scene);
         primaryStage.show();
+        Administratie administratie = new Administratie();
+        administratie.setup();
     }
 
     /**
