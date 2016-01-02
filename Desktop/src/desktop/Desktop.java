@@ -30,7 +30,6 @@ public class Desktop extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         Administratie administratie = new Administratie();
-        administratie.setup();
     }
 
     /**
@@ -39,5 +38,4 @@ public class Desktop extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

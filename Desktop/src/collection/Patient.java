@@ -16,11 +16,13 @@ public class Patient {
     
     private String naam;
     private Date geboorteDatum;
+    private int patientNummer;
     private ArrayList<Afspraak> agenda;
     
-    public Patient(String naam, Date geboorteDatum) {
+    public Patient(String naam, Date geboorteDatum, int patientNummer) {
         this.naam = naam;
         this.geboorteDatum = geboorteDatum;
+        this.patientNummer = patientNummer;
         this.agenda = new ArrayList();
     }
     
@@ -38,5 +40,13 @@ public class Patient {
     
     public Date getGeboorteDatum() {
         return this.geboorteDatum;
+    }
+    
+    public int getPatientNummer(){
+        return this.patientNummer;
+    }
+    
+    public String toString() {
+        return String.valueOf(this.patientNummer + " " + this.naam + " " + this.geboorteDatum);
     }
 }

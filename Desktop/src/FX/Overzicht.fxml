@@ -35,7 +35,7 @@
       <TextArea disable="true" layoutX="365.0" layoutY="509.0" prefHeight="135.0" prefWidth="380.0" />
       <ImageView id="ivFotoDichtbij" fx:id="ivFotoDichtbij" fitHeight="121.0" fitWidth="171.0" layoutX="370.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView id="ivFotoVeraf" fx:id="ivFotoVeraf" fitHeight="121.0" fitWidth="171.0" layoutX="568.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
-      <Button id="btVolgende" fx:id="btVolgende" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" text="Volgende Patiënt" />
-      <Button id="btVerstuur" fx:id="btVerstuur" layoutX="1084.0" layoutY="656.0" mnemonicParsing="false" text="Verstuur" />
+      <Button id="btVolgende" fx:id="btVolgende" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" onMouseClicked="#volgendePatient" text="Volgende Patiënt" />
+      <Button id="btVerstuur" fx:id="btVerstuur" layoutX="1084.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#verstuur" text="Verstuur" />
    </children>
 </AnchorPane>

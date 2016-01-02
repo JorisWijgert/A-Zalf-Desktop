@@ -6,6 +6,7 @@
 package collection;
 
 import FX.OverzichtController;
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 
 /**
@@ -17,13 +18,28 @@ public class Administratie {
     private OverzichtController overzichtController;
     private Image image;
     
+    public Administratie(){
+        setup();
+    }
+    
     public void setup() {
-        overzichtController = new OverzichtController();      
-        overzichtController.setIvFotoDichtbij(kiesImage("Dichtbij"));
+        overzichtController = new OverzichtController(); 
+        Platform.runLater(new Runnable(){
+
+            @Override
+            public void run() {
+                overzichtController.setIvFotoDichtbij(kiesImage("Dichtbij"));
+                vulAllePatienten();
+            }
+        });
     }
     
     private Image kiesImage(String filenaam){
         return image = new Image("/recourses/"+ filenaam + ".jpg");
+    }
+    
+    private void vulAllePatienten(){
+        overzichtController.vullAlleAfspraken();
     }
 
 }
