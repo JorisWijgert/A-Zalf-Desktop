@@ -29,7 +29,6 @@ public class Administratie {
             @Override
             public void run() {
                 overzichtController.setIvFotoDichtbij(kiesImage("Dichtbij"));
-                vulAllePatienten();
             }
         });
     }
@@ -37,9 +36,4 @@ public class Administratie {
     private Image kiesImage(String filenaam){
         return image = new Image("/recourses/"+ filenaam + ".jpg");
     }
-    
-    private void vulAllePatienten(){
-        overzichtController.vullAlleAfspraken();
-    }
-
 }

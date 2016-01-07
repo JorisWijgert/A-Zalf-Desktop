@@ -58,6 +58,7 @@ public class Afspraak {
         return diagnose;
     }
 
+    @Override
     public String toString() {
         return this.getPatient().getNaam();
     }

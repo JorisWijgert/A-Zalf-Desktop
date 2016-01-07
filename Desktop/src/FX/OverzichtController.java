@@ -49,13 +49,10 @@ public class OverzichtController implements Initializable {
     private Button btVerstuur;
     
     private ArrayList<Afspraak> afsprakenArray = new ArrayList<>();
-    private ObservableList<Afspraak> afsprakenObservable = FXCollections.observableArrayList();
+    private ObservableList<Afspraak> afsprakenObservable = FXCollections.observableArrayList(afsprakenArray);
     private ArrayList<Patient> patienten = new ArrayList<>();
     
     private Arts arts;
-    
-
-//ObservableList<Stavka> oListStavaka = FXCollections.observableArrayList(listStavaka);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,6 +60,7 @@ public class OverzichtController implements Initializable {
         taInformatie.setText("Informatie");
         taVolgendeAfspraak.setText("12:30");
         arts = new Arts("Theodore", "1");
+        this.vullAlleAfspraken();
     }
 
     @FXML
@@ -84,11 +82,12 @@ public class OverzichtController implements Initializable {
         Informatie informatie = new Informatie("Klachten");
         Afspraak afspraak = new Afspraak(patient, arts, informatie, new Date(23 - 02 - 2016), new Date(23 - 02 - 2016));
         afsprakenArray.add(afspraak);
+        //lvAfspraken.setItems(FXCollections.observableArrayList(afsprakenArray));
         laatAfsprakenInLijstZien();
     }
 
     public void laatAfsprakenInLijstZien() {
-        lvAfspraken.getItems().setAll(FXCollections.observableArrayList(afsprakenObservable).toString());
+        lvAfspraken.getItems().setAll(FXCollections.observableArrayList(afsprakenArray));
     }
     
     @FXML
@@ -96,7 +95,7 @@ public class OverzichtController implements Initializable {
         System.out.println("Diagnose verstuurd!");
     }
     
-    private void allePatienten(){
+    private void vulAllePatienten(){
         Patient patient0 = new Patient("Piet Fransen", new Date(23 - 02 - 1964), 11923);
         patienten.add(patient0);
         Patient patient1 = new Patient("Sjaak Teeven", new Date(11 - 02 - 1965), 73645);
