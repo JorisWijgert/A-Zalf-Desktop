@@ -20,7 +20,10 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea id="taVolgendeAfspraak" fx:id="taVolgendeAfspraak" editable="false" layoutX="794.0" layoutY="149.0" prefHeight="60.0" prefWidth="354.0" />
+      <TextArea id="taVolgendeAfspraak" fx:id="taVolgendeAfspraak" layoutX="794.0" layoutY="149.0" prefHeight="60.0" prefWidth="354.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextArea>
       <Label layoutX="869.0" layoutY="106.0" prefHeight="29.0" prefWidth="219.0" text="Volgende afspraak">
          <font>
             <Font size="24.0" />
@@ -38,5 +41,10 @@
       <Button id="btVolgende" fx:id="btVolgende" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" onMouseClicked="#volgendePatient" text="Volgende Patiënt" />
       <Button id="btVerstuur" fx:id="btVerstuur" layoutX="1084.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#verstuur" text="Verstuur" />
       <ImageView fx:id="ivLogo" fitHeight="84.0" fitWidth="77.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lbVolgendeAfspraak" layoutX="918.0" layoutY="165.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
