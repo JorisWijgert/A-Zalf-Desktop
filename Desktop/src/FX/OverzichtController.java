@@ -21,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -50,6 +51,9 @@ public class OverzichtController implements Initializable {
     private ImageView ivLogo;
 
     @FXML
+    private Label lbVolgendeAfspraak;
+
+    @FXML
     private Button btVolgende;
     @FXML
     private Button btVerstuur;
@@ -66,19 +70,17 @@ public class OverzichtController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //taDiagnose.setText("Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.");
-        //taInformatie.setText("Informatie");
-        //taVolgendeAfspraak.setText("12:30");
         arts = new Arts("Theodore", "1");
         this.vulAllePatienten();
         this.vulAlleInformatie();
         this.vulAlleDiagnoses();
         this.vulAlleAfspraken();
 
+        ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
+        ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
+
         ivLogo.setImage(new Image("/recourses/logo2.png"));
-        ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
-        ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
-        taVolgendeAfspraak.setText("10 Minuten");
+        lbVolgendeAfspraak.setText("10 Minuten");
 
         lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>() {
             @Override
@@ -107,7 +109,14 @@ public class OverzichtController implements Initializable {
         int index = lvAfspraken.getSelectionModel().getSelectedIndex();
         if ((index + 1) < afsprakenArray.size()) {
             lvAfspraken.getSelectionModel().select(index + 1);
-        } else{
+            if ((index % 2) == 0) {
+                ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
+                ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
+            } else {
+                ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
+                ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
+            }
+        } else {
             System.out.println("U bent afgewerkt!");
         }
         System.out.println("Volgende patient!");
@@ -172,9 +181,9 @@ public class OverzichtController implements Initializable {
         diagnoses.add(diagnose1);
         Diagnose diagnose2 = new Diagnose("Na direct contact met de brandharen kan binnen 8 uur een rode pijnlijke huiduitslag met hevige jeuk ontstaan, die zich kenmerkt door bultjes, pukkeltjes of met vochtgevulde blaasjes die kunnen gaan ontsteken. Vaak ontstaan deze reacties op de onbedekte huid, maar door versleping met bijvoorbeeld zweet kan dit ook plaatsvinden op de bedekte huid. Als er brandharen in de ogen terechtkomen, kunnen zij binnen 1 tot 4 uur een heftige reactie geven van het oogbindvlies en/of hoornvlies met zwelling, roodheid en jeuk en in sommige gevallen met ontstekingen. Na inademing kunnen brandharen irritatie of ontsteking geven van het slijmvlies van de bovenste luchtwegen (neus, keel en bovenste gedeelte luchtpijp). De klachten lijken op een neusverkoudheid. Tevens kunnen mensen ook klagen over pijn in de keel en eventuele slikstoornissen, in sommige gevallen is er sprake van kortademigheid. Daarnaast kunnen algemene klachten optreden, zoals braken, duizeligheid, koorts en algehele malaise.");
         diagnoses.add(diagnose2);
-        Diagnose diagnose3 = new Diagnose("Seborrhoïsch eczeem is een huidaandoening waarbij er roodheid en schilfers zijn; vooral in het gezicht en op het behaarde hoofd. De aandoening ontstaat aan het begin van de puberteit en is niet besmettelijk. In de kinderjaren komt het vrijwel niet voor. Meestal zijn er afwisselend periodes waarin de verschijnselen minder, of juist erger zijn.\n" +
-" \n" +
-"Bij deze aandoening speelt het micro-organisme Pityrosporum ovale (een gistsoort) een belangrijke rol. Dit micro-organisme is van nature op ieders huid aanwezig. Bij mensen met seborrhoïsch eczeem echter in grotere hoeveelheden dan normaal. Waardoor dit komt weet men niet. Het afweersysteem van het lichaam reageert op de gist met een ontsteking. Dit veroorzaakt de roodheid van het eczeem.");
+        Diagnose diagnose3 = new Diagnose("Seborrhoïsch eczeem is een huidaandoening waarbij er roodheid en schilfers zijn; vooral in het gezicht en op het behaarde hoofd. De aandoening ontstaat aan het begin van de puberteit en is niet besmettelijk. In de kinderjaren komt het vrijwel niet voor. Meestal zijn er afwisselend periodes waarin de verschijnselen minder, of juist erger zijn.\n"
+                + " \n"
+                + "Bij deze aandoening speelt het micro-organisme Pityrosporum ovale (een gistsoort) een belangrijke rol. Dit micro-organisme is van nature op ieders huid aanwezig. Bij mensen met seborrhoïsch eczeem echter in grotere hoeveelheden dan normaal. Waardoor dit komt weet men niet. Het afweersysteem van het lichaam reageert op de gist met een ontsteking. Dit veroorzaakt de roodheid van het eczeem.");
         diagnoses.add(diagnose3);
         Diagnose diagnose4 = new Diagnose("‘Roos’ is de mildste vorm van seborrhoïsch eczeem, Er zijn dan fijne schilfertjes op het behaarde hoofd, waarbij er ook jeuk is. In een ernstigere vorm wordt de hoofdhuid rood en neem de schilfering toe. Seborrhoïsch eczeem op de onbehaarde huid geeft ook jeuk, roodheid en schilfering. Deze schilfering is vaak wat gelig van kleur en doet wasachtig/vettig aan. De jeuk bij seborrhoïsch eczeem is meestal milder dan bij andere vormen van eczeem, maar de verschijnselen kunnen cosmetisch erg storend zijn.");
         diagnoses.add(diagnose4);
