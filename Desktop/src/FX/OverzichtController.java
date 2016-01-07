@@ -13,6 +13,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,17 +53,31 @@ public class OverzichtController implements Initializable {
     private ArrayList<Afspraak> afsprakenArray = new ArrayList<>();
     private ObservableList<Afspraak> afsprakenObservable = FXCollections.observableArrayList(afsprakenArray);
     private ArrayList<Patient> patienten = new ArrayList<>();
+    private ArrayList<Informatie> informaties = new ArrayList<>();
     
     private Arts arts;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        taDiagnose.setText("Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.");
-        taInformatie.setText("Informatie");
-        taVolgendeAfspraak.setText("12:30");
+        //taDiagnose.setText("Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.");
+        //taInformatie.setText("Informatie");
+        //taVolgendeAfspraak.setText("12:30");
         arts = new Arts("Theodore", "1");
-        this.vullAlleAfspraken();
+        this.vulAllePatienten();
+        this.vulAlleInformatie();
+        this.vulAlleAfspraken();
+        
+        lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>(){
+            @Override
+            public void changed(ObservableValue<? extends Afspraak> observable, Afspraak oldValue, Afspraak newValue) {
+                Afspraak afspraak = newValue;
+                System.out.println(afspraak.toString());
+            }
+        });
     }
+    
+    //listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+    
 
     @FXML
     public void volgendePatient() {
@@ -74,16 +90,6 @@ public class OverzichtController implements Initializable {
 
     public void setIvFotoVeraf(Image ivFotoVeraf) {
         this.ivFotoVeraf.setImage(ivFotoVeraf);
-    }
-
-    public void vullAlleAfspraken() {
-        Patient patient = new Patient("Piet Fransen", new Date(23 - 02 - 1964), 11923);
-
-        Informatie informatie = new Informatie("Klachten");
-        Afspraak afspraak = new Afspraak(patient, arts, informatie, new Date(23 - 02 - 2016), new Date(23 - 02 - 2016));
-        afsprakenArray.add(afspraak);
-        //lvAfspraken.setItems(FXCollections.observableArrayList(afsprakenArray));
-        laatAfsprakenInLijstZien();
     }
 
     public void laatAfsprakenInLijstZien() {
@@ -116,5 +122,41 @@ public class OverzichtController implements Initializable {
         patienten.add(patient8);
         Patient patient9 = new Patient("Jac Mensens", new Date(19 - 10 - 1960), 74523);
         patienten.add(patient9);
+    }
+    
+    private void vulAlleInformatie(){
+         Informatie informatie0 = new Informatie("Klachten0");
+         informaties.add(informatie0);
+         Informatie informatie1 = new Informatie("Klachten1");
+         informaties.add(informatie1);
+         Informatie informatie2 = new Informatie("Klachten2");
+         informaties.add(informatie2);
+         Informatie informatie3 = new Informatie("Klachten3");
+         informaties.add(informatie3);
+         Informatie informatie4 = new Informatie("Klachten4");
+         informaties.add(informatie4);
+         Informatie informatie5 = new Informatie("Klachten5");
+         informaties.add(informatie5);
+         Informatie informatie6 = new Informatie("Klachten6");
+         informaties.add(informatie6);
+         Informatie informatie7 = new Informatie("Klachten7");
+         informaties.add(informatie7);
+         Informatie informatie8 = new Informatie("Klachten8");
+         informaties.add(informatie8);
+         Informatie informatie9 = new Informatie("Klachten9");
+         informaties.add(informatie9);
+    }
+    
+    private void vulAlleAfspraken(){
+        
+        Afspraak afspraak;
+        
+        for(int i = 0; i<10; i++){
+            Patient patient = patienten.get(i);
+            Informatie informatie = informaties.get(i);
+            afspraak = new Afspraak(patient, arts, informatie, new Date(23 - 02 - 2016), new Date(23 - 02 - 2016));
+            afsprakenArray.add(afspraak);
+        }
+        laatAfsprakenInLijstZien();
     }
 }
