@@ -14,7 +14,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea id="taInformatie" fx:id="taInformatie" layoutX="370.0" layoutY="150.0" prefHeight="333.0" prefWidth="369.0" />
+      <TextArea id="taInformatie" fx:id="taInformatie" layoutX="370.0" layoutY="150.0" prefHeight="333.0" prefWidth="369.0" wrapText="true" />
       <Label layoutX="510.0" layoutY="106.0" prefHeight="29.0" prefWidth="116.0" text="Informatie">
          <font>
             <Font size="24.0" />
@@ -26,7 +26,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea id="taDiagnose" fx:id="taDiagnose" layoutX="801.0" layoutY="271.0" prefHeight="377.0" prefWidth="354.0" />
+      <TextArea id="taDiagnose" fx:id="taDiagnose" layoutX="801.0" layoutY="271.0" prefHeight="377.0" prefWidth="354.0" wrapText="true" />
       <Label layoutX="923.0" layoutY="226.0" prefHeight="29.0" prefWidth="116.0" text="Diagnose">
          <font>
             <Font size="24.0" />
