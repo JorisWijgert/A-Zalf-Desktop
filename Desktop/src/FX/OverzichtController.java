@@ -72,6 +72,7 @@ public class OverzichtController implements Initializable {
         ivLogo.setImage(new Image("/recourses/logo2.png"));
         ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
         ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
+        taDiagnose.setText("De klachten verdwijnen meestal vanzelf binnen enige dagen tot weken. \nVoorkom krabben of wrijven. Was de huid goed met water. \nOgen kunt u met water uitspoelen. Om verdere \nverspreiding van de brandharen over het lichaam te \nvoorkomen en om de ontstekingsreactie tegen te gaan \nis het zinvol de huid direct na de blootstelling met plakband te strippen, \nom zo alle brandharen te verwijderen. Bij lichte klachten zijn geen \nmedicijnen nodig. Bij hevige jeuk kunnen anti-jeuk middelen helpen, \nzoals een crème op basis van menthol, aloë vera of calendula. \nDeze middelen zijn verkrijgbaar bij apotheek of drogist. \nBij aanhoudend ernstige klachten kunt u contact \nopnemen met uw huisarts.");
         
         lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>(){
             @Override
