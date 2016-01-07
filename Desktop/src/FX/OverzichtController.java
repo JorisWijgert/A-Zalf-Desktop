@@ -44,6 +44,8 @@ public class OverzichtController implements Initializable {
     private ImageView ivFotoDichtbij = new ImageView();
     @FXML
     private ImageView ivFotoVeraf = new ImageView();
+    @FXML
+    private ImageView ivLogo;
 
     @FXML
     private Button btVolgende;
@@ -66,6 +68,10 @@ public class OverzichtController implements Initializable {
         this.vulAllePatienten();
         this.vulAlleInformatie();
         this.vulAlleAfspraken();
+        
+        ivLogo.setImage(new Image("/recourses/logo2.png"));
+        ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
+        ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
         
         lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>(){
             @Override
