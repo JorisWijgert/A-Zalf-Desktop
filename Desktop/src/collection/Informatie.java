@@ -12,20 +12,20 @@ import java.awt.Image;
  * @author brunodelsing
  */
 public class Informatie {
-    
+
     private String klachten, opmerkingen;
     private Image fotoDichtbij, fotoVeraf;
-    
+
     public Informatie(String klachten) {
         this.klachten = klachten;
     }
-    
+
     public Informatie(String klachten, Image fotoDichtbij, Image fotoVeraf) {
         this.klachten = klachten;
         this.fotoDichtbij = fotoDichtbij;
         this.fotoVeraf = fotoVeraf;
     }
-    
+
     public Informatie(String klachten, Image fotoDichtbij, Image fotoVeraf, String opmerkingen) {
         this.klachten = klachten;
         this.fotoDichtbij = fotoDichtbij;
@@ -48,7 +48,10 @@ public class Informatie {
     public Image getFotoVeraf() {
         return fotoVeraf;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return this.getKlachten();
+    }
+
 }

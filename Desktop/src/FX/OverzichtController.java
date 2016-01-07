@@ -71,13 +71,12 @@ public class OverzichtController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Afspraak> observable, Afspraak oldValue, Afspraak newValue) {
                 Afspraak afspraak = newValue;
-                System.out.println(afspraak.toString());
+                taInformatie.setText(afspraak.getInformatie().toString());
+                //taDiagnose.setText(afspraak.getDiagnose().toString());
+                //System.out.println(afspraak.toString());
             }
         });
     }
-    
-    //listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-    
 
     @FXML
     public void volgendePatient() {

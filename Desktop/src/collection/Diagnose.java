@@ -33,4 +33,9 @@ public class Diagnose {
     public void setReminders(ArrayList<Date> reminders) {
         this.reminders = reminders;
     }
+    
+    @Override
+    public String toString() {
+        return this.beschrijving;
+    }
 }
