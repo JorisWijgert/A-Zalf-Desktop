@@ -52,6 +52,8 @@ public class OverzichtController implements Initializable {
 
     @FXML
     private Label lbVolgendeAfspraak;
+    @FXML
+    private Label lbHuidigePatient;
 
     @FXML
     private Button btVolgende;
@@ -67,6 +69,7 @@ public class OverzichtController implements Initializable {
     private Arts arts;
 
     private Afspraak geselecteerdeAfspraak;
+    private int indexHuidigeAfspraak = -1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,10 +109,10 @@ public class OverzichtController implements Initializable {
 
     @FXML
     public void volgendePatient() {
-        int index = lvAfspraken.getSelectionModel().getSelectedIndex();
-        if ((index + 1) < afsprakenArray.size()) {
-            lvAfspraken.getSelectionModel().select(index + 1);
-            if ((index % 2) == 0) {
+        indexHuidigeAfspraak++;
+        if ((indexHuidigeAfspraak) < afsprakenArray.size()) {
+            lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
+            if ((indexHuidigeAfspraak % 2) == 0) {
                 ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
                 ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
             } else {
@@ -117,9 +120,10 @@ public class OverzichtController implements Initializable {
                 ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
             }
         } else {
-            System.out.println("U bent afgewerkt!");
+            System.out.println("Geen patiënten meer!");
         }
-        System.out.println("Volgende patient!");
+        System.out.println("Volgende patiënt!");
+        lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
     }
 
     @FXML
