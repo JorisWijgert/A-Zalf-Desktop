@@ -67,7 +67,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="122.0" layoutY="39.0" text="A-Zalf" textFill="#1562b3">
+      <Label layoutX="101.0" layoutY="63.0" text="A-Zalf" textFill="#1562b3">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
