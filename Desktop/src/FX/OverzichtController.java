@@ -54,6 +54,8 @@ public class OverzichtController implements Initializable {
     private Label lbVolgendeAfspraak;
     @FXML
     private Label lbHuidigePatient;
+    @FXML
+    private Label lbWelkomArts;
 
     @FXML
     private Button btVolgende;
@@ -67,7 +69,6 @@ public class OverzichtController implements Initializable {
     private ArrayList<Diagnose> diagnoses = new ArrayList<>();
 
     private Arts arts;
-
     private Afspraak geselecteerdeAfspraak;
     private int indexHuidigeAfspraak = -1;
 
@@ -78,7 +79,8 @@ public class OverzichtController implements Initializable {
         this.vulAlleInformatie();
         this.vulAlleDiagnoses();
         this.vulAlleAfspraken();
-
+        
+        lbWelkomArts.setText("Welkom, " + arts.getNaam());
         ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
         ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
 
