@@ -91,6 +91,14 @@ public class OverzichtController implements Initializable {
                 geselecteerdeAfspraak = newValue;
                 taInformatie.setText(geselecteerdeAfspraak.getInformatie().toString());
                 taDiagnose.setText(geselecteerdeAfspraak.getDiagnose().toString());
+
+                if ((lvAfspraken.getSelectionModel().getSelectedIndex() % 2) == 0) {
+                    ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
+                    ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
+                } else {
+                    ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
+                    ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
+                }
             }
         });
     }
@@ -110,20 +118,24 @@ public class OverzichtController implements Initializable {
     @FXML
     public void volgendePatient() {
         indexHuidigeAfspraak++;
-        if ((indexHuidigeAfspraak) < afsprakenArray.size()) {
-            lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
-            if ((indexHuidigeAfspraak % 2) == 0) {
-                ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
-                ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
-            } else {
-                ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
-                ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
-            }
+        if (indexHuidigeAfspraak >= lvAfspraken.getItems().size()) {
+            System.out.println("Geen afspraken meer!");
         } else {
-            System.out.println("Geen patiënten meer!");
+            if ((indexHuidigeAfspraak) < afsprakenArray.size()) {
+                lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
+                if ((indexHuidigeAfspraak % 2) == 0) {
+                    ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
+                    ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
+                } else {
+                    ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
+                    ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
+                }
+            } else {
+                System.out.println("Geen patiënten meer!");
+            }
+            System.out.println("Volgende patiënt!");
+            lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
         }
-        System.out.println("Volgende patiënt!");
-        lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
     }
 
     @FXML
@@ -153,11 +165,27 @@ public class OverzichtController implements Initializable {
         patienten.add(patient8);
         Patient patient9 = new Patient("Jac", "Mensens", new Date(1960, 10, 19, 0, 0), 74523);
         patienten.add(patient9);
+        Patient patient10 = new Patient("Frans", "Diederiks", new Date(1950, 4, 18, 0, 0), 74663);
+        patienten.add(patient10);
+        Patient patient11 = new Patient("Julia", "Davids", new Date(19651, 5, 17, 0, 0), 71123);
+        patienten.add(patient11);
+        Patient patient12 = new Patient("Robert", "Janse", new Date(19652, 6, 16, 0, 0), 92113);
+        patienten.add(patient12);
+        Patient patient13 = new Patient("Francien", "Mensens", new Date(1953, 7, 15, 0, 0), 76166);
+        patienten.add(patient13);
+        Patient patient14 = new Patient("Dennis", "Pok", new Date(1954, 8, 14, 0, 0), 43256);
+        patienten.add(patient14);
+        Patient patient15 = new Patient("Vanessa", "Driesen", new Date(1955, 12, 19, 0, 0), 92613);
+        patienten.add(patient15);
+        Patient patient16 = new Patient("Quin", "Simmens", new Date(1956, 10, 12, 0, 0), 83513);
+        patienten.add(patient16);
+        Patient patient17 = new Patient("Samsom", "Roberts", new Date(1957, 9, 11, 0, 0), 43432);
+        patienten.add(patient17);
     }
 
     private void vulAlleInformatie() {
         int i = 0;
-        Informatie informatie0 = new Informatie(getPatient(i).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() +"\n\nDe patiënt heeft last van: \n- Wratten op de tenen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 4 dagen");
+        Informatie informatie0 = new Informatie(getPatient(i).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de tenen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 4 dagen");
         informaties.add(informatie0);
         Informatie informatie1 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Galbulten op de rug. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 15 dagen");
         informaties.add(informatie1);
@@ -177,9 +205,25 @@ public class OverzichtController implements Initializable {
         informaties.add(informatie8);
         Informatie informatie9 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de handen en voeten. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 17 dagen");
         informaties.add(informatie9);
+        Informatie informatie10 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Zonbeschadeging op de buik. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 12 dagen");
+        informaties.add(informatie10);
+        Informatie informatie11 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Spataderen op de onderarmen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 40 dagen");
+        informaties.add(informatie11);
+        Informatie informatie12 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Schimmelinfecties tussen de vingers. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 12 dagen");
+        informaties.add(informatie12);
+        Informatie informatie13 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Galbulten op de rug. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 15 dagen");
+        informaties.add(informatie13);
+        Informatie informatie14 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Zonbeschadeging op de buik. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 12 dagen");
+        informaties.add(informatie14);
+        Informatie informatie15 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de handen en voeten. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 17 dagen");
+        informaties.add(informatie15);
+        Informatie informatie16 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de handen en voeten. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 17 dagen");
+        informaties.add(informatie16);
+        Informatie informatie17 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de handen en voeten. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 17 dagen");
+        informaties.add(informatie17);
     }
-    
-    private Patient getPatient(int i){
+
+    private Patient getPatient(int i) {
         Patient patient = patienten.get(i);
         return patient;
     }
@@ -207,13 +251,29 @@ public class OverzichtController implements Initializable {
         diagnoses.add(diagnose8);
         Diagnose diagnose9 = new Diagnose("");
         diagnoses.add(diagnose9);
+        Diagnose diagnose10 = new Diagnose("");
+        diagnoses.add(diagnose10);
+        Diagnose diagnose11 = new Diagnose("");
+        diagnoses.add(diagnose11);
+        Diagnose diagnose12 = new Diagnose("");
+        diagnoses.add(diagnose12);
+        Diagnose diagnose13 = new Diagnose("");
+        diagnoses.add(diagnose13);
+        Diagnose diagnose14 = new Diagnose("");
+        diagnoses.add(diagnose14);
+        Diagnose diagnose15 = new Diagnose("");
+        diagnoses.add(diagnose15);
+        Diagnose diagnose16 = new Diagnose("");
+        diagnoses.add(diagnose16);
+        Diagnose diagnose17 = new Diagnose("");
+        diagnoses.add(diagnose17);
     }
 
     private void vulAlleAfspraken() {
 
         Afspraak afspraak;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 17; i++) {
             Patient patient = patienten.get(i);
             Informatie informatie = informaties.get(i);
             afspraak = new Afspraak(patient, arts, informatie, new Date(23 - 02 - 2016), new Date(23 - 02 - 2016));

@@ -53,6 +53,6 @@ public class Patient {
     }
     
     public String toString() {
-        return String.valueOf(this.patientNummer + " - " + this.achternaam + " " + this.voornaam);
+        return String.valueOf(this.patientNummer + " - " + this.achternaam + ", " + this.voornaam);
     }
 }
