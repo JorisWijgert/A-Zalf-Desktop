@@ -57,7 +57,7 @@ public class OverzichtController implements Initializable {
     private Label lbHuidigePatient;
     @FXML
     private Label lbWelkomArts;
-    
+
     @FXML
     private TextField tfPrescriptie;
     @FXML
@@ -85,24 +85,25 @@ public class OverzichtController implements Initializable {
         this.vulAlleInformatie();
         this.vulAlleDiagnoses();
         this.vulAlleAfspraken();
-        
+
         lbWelkomArts.setText("Welkom, " + arts.getNaam());
         ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
         ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
 
         ivLogo.setImage(new Image("/recourses/logo2.png"));
         lbVolgendeAfspraak.setText("10 Minuten");
-        
+
         lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
         lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
-        
+
         lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>() {
             @Override
             public void changed(ObservableValue<? extends Afspraak> observable, Afspraak oldValue, Afspraak newValue) {
                 geselecteerdeAfspraak = newValue;
                 taInformatie.setText(geselecteerdeAfspraak.getInformatie().toString());
                 taDiagnose.setText(geselecteerdeAfspraak.getDiagnose().toString());
-
+                tfPrescriptie.setText(geselecteerdeAfspraak.getDiagnose().getPrescriptie());
+                
                 if ((lvAfspraken.getSelectionModel().getSelectedIndex() % 2) == 0) {
                     ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
                     ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));

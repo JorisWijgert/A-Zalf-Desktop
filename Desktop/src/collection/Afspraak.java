@@ -20,6 +20,7 @@ public class Afspraak {
 
     private Informatie informatie;
     private Diagnose diagnose;
+    private String prescriptie;
 
     public Afspraak(Patient patient, Arts arts, Informatie informatie, Date tijdstip, Date tijdsduur) {
         this.patient = patient;
@@ -56,6 +57,14 @@ public class Afspraak {
 
     public Diagnose getDiagnose() {
         return diagnose;
+    }
+    
+    public void setPrescriptie(String prescriptie){
+        this.prescriptie = prescriptie;
+    }
+    
+    public String getPrescriptie(){
+        return this.prescriptie;
     }
 
     @Override
