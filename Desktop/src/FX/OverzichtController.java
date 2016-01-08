@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -56,6 +57,11 @@ public class OverzichtController implements Initializable {
     private Label lbHuidigePatient;
     @FXML
     private Label lbWelkomArts;
+    
+    @FXML
+    private TextField tfPrescriptie;
+    @FXML
+    private TextField tfInnameMedicatie;
 
     @FXML
     private Button btVolgende;
@@ -70,7 +76,7 @@ public class OverzichtController implements Initializable {
 
     private Arts arts;
     private Afspraak geselecteerdeAfspraak;
-    private int indexHuidigeAfspraak = -1;
+    private int indexHuidigeAfspraak = 9;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,7 +92,10 @@ public class OverzichtController implements Initializable {
 
         ivLogo.setImage(new Image("/recourses/logo2.png"));
         lbVolgendeAfspraak.setText("10 Minuten");
-
+        
+        lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
+        lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
+        
         lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>() {
             @Override
             public void changed(ObservableValue<? extends Afspraak> observable, Afspraak oldValue, Afspraak newValue) {
@@ -137,6 +146,7 @@ public class OverzichtController implements Initializable {
             }
             System.out.println("Volgende patiënt!");
             lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
+            tfPrescriptie.setText(geselecteerdeAfspraak.getDiagnose().getPrescriptie());
         }
     }
 
@@ -231,25 +241,25 @@ public class OverzichtController implements Initializable {
     }
 
     private void vulAlleDiagnoses() {
-        Diagnose diagnose0 = new Diagnose("De klachten verdwijnen meestal vanzelf binnen enige dagen tot weken. Voorkom krabben of wrijven. Was de huid goed met water. Ogen kunt u met water uitspoelen. Om verdere verspreiding van de brandharen over het lichaam te voorkomen en om de ontstekingsreactie tegen te gaan is het zinvol de huid direct na de blootstelling met plakband te strippen, om zo alle brandharen te verwijderen. Bij lichte klachten zijn geen medicijnen nodig. Bij hevige jeuk kunnen anti-jeuk middelen helpen, zoals een crème op basis van menthol, aloë vera of calendula. Deze middelen zijn verkrijgbaar bij apotheek of drogist. Bij aanhoudend ernstige klachten kunt u contact opnemen met uw huisarts.");
+        Diagnose diagnose0 = new Diagnose("De klachten verdwijnen meestal vanzelf binnen enige dagen tot weken. Voorkom krabben of wrijven. Was de huid goed met water. Ogen kunt u met water uitspoelen. Om verdere verspreiding van de brandharen over het lichaam te voorkomen en om de ontstekingsreactie tegen te gaan is het zinvol de huid direct na de blootstelling met plakband te strippen, om zo alle brandharen te verwijderen. Bij lichte klachten zijn geen medicijnen nodig. Bij hevige jeuk kunnen anti-jeuk middelen helpen, zoals een crème op basis van menthol, aloë vera of calendula. Deze middelen zijn verkrijgbaar bij apotheek of drogist. Bij aanhoudend ernstige klachten kunt u contact opnemen met uw huisarts.", "Bactroban");
         diagnoses.add(diagnose0);
-        Diagnose diagnose1 = new Diagnose("Om klachten te voorkomen kunt u het beste de rupsen met rust laten en contact met hun nesten en spinsels voorkomen. Dat geldt ook voor uw huisdier(en). Als u rupsen aantreft op gemeentebomen, neem dan contact op met de gemeentewerf, telefoon (0481) 372 684. Treft u de rupsen aan op particuliere bomen? Dan kan de gemeente u helaas niet helpen. U kunt zelf een bedrijf inschakelen om de rupsen te laten verwijderen.");
+        Diagnose diagnose1 = new Diagnose("Om klachten te voorkomen kunt u het beste de rupsen met rust laten en contact met hun nesten en spinsels voorkomen. Dat geldt ook voor uw huisdier(en). Als u rupsen aantreft op gemeentebomen, neem dan contact op met de gemeentewerf, telefoon (0481) 372 684. Treft u de rupsen aan op particuliere bomen? Dan kan de gemeente u helaas niet helpen. U kunt zelf een bedrijf inschakelen om de rupsen te laten verwijderen.", "Daktarin");
         diagnoses.add(diagnose1);
-        Diagnose diagnose2 = new Diagnose("Na direct contact met de brandharen kan binnen 8 uur een rode pijnlijke huiduitslag met hevige jeuk ontstaan, die zich kenmerkt door bultjes, pukkeltjes of met vochtgevulde blaasjes die kunnen gaan ontsteken. Vaak ontstaan deze reacties op de onbedekte huid, maar door versleping met bijvoorbeeld zweet kan dit ook plaatsvinden op de bedekte huid. Als er brandharen in de ogen terechtkomen, kunnen zij binnen 1 tot 4 uur een heftige reactie geven van het oogbindvlies en/of hoornvlies met zwelling, roodheid en jeuk en in sommige gevallen met ontstekingen. Na inademing kunnen brandharen irritatie of ontsteking geven van het slijmvlies van de bovenste luchtwegen (neus, keel en bovenste gedeelte luchtpijp). De klachten lijken op een neusverkoudheid. Tevens kunnen mensen ook klagen over pijn in de keel en eventuele slikstoornissen, in sommige gevallen is er sprake van kortademigheid. Daarnaast kunnen algemene klachten optreden, zoals braken, duizeligheid, koorts en algehele malaise.");
+        Diagnose diagnose2 = new Diagnose("Na direct contact met de brandharen kan binnen 8 uur een rode pijnlijke huiduitslag met hevige jeuk ontstaan, die zich kenmerkt door bultjes, pukkeltjes of met vochtgevulde blaasjes die kunnen gaan ontsteken. Vaak ontstaan deze reacties op de onbedekte huid, maar door versleping met bijvoorbeeld zweet kan dit ook plaatsvinden op de bedekte huid. Als er brandharen in de ogen terechtkomen, kunnen zij binnen 1 tot 4 uur een heftige reactie geven van het oogbindvlies en/of hoornvlies met zwelling, roodheid en jeuk en in sommige gevallen met ontstekingen. Na inademing kunnen brandharen irritatie of ontsteking geven van het slijmvlies van de bovenste luchtwegen (neus, keel en bovenste gedeelte luchtpijp). De klachten lijken op een neusverkoudheid. Tevens kunnen mensen ook klagen over pijn in de keel en eventuele slikstoornissen, in sommige gevallen is er sprake van kortademigheid. Daarnaast kunnen algemene klachten optreden, zoals braken, duizeligheid, koorts en algehele malaise.", "Madopar");
         diagnoses.add(diagnose2);
         Diagnose diagnose3 = new Diagnose("Seborrhoïsch eczeem is een huidaandoening waarbij er roodheid en schilfers zijn; vooral in het gezicht en op het behaarde hoofd. De aandoening ontstaat aan het begin van de puberteit en is niet besmettelijk. In de kinderjaren komt het vrijwel niet voor. Meestal zijn er afwisselend periodes waarin de verschijnselen minder, of juist erger zijn.\n"
                 + " \n"
-                + "Bij deze aandoening speelt het micro-organisme Pityrosporum ovale (een gistsoort) een belangrijke rol. Dit micro-organisme is van nature op ieders huid aanwezig. Bij mensen met seborrhoïsch eczeem echter in grotere hoeveelheden dan normaal. Waardoor dit komt weet men niet. Het afweersysteem van het lichaam reageert op de gist met een ontsteking. Dit veroorzaakt de roodheid van het eczeem.");
+                + "Bij deze aandoening speelt het micro-organisme Pityrosporum ovale (een gistsoort) een belangrijke rol. Dit micro-organisme is van nature op ieders huid aanwezig. Bij mensen met seborrhoïsch eczeem echter in grotere hoeveelheden dan normaal. Waardoor dit komt weet men niet. Het afweersysteem van het lichaam reageert op de gist met een ontsteking. Dit veroorzaakt de roodheid van het eczeem.", "Metopiron");
         diagnoses.add(diagnose3);
-        Diagnose diagnose4 = new Diagnose("‘Roos’ is de mildste vorm van seborrhoïsch eczeem, Er zijn dan fijne schilfertjes op het behaarde hoofd, waarbij er ook jeuk is. In een ernstigere vorm wordt de hoofdhuid rood en neem de schilfering toe. Seborrhoïsch eczeem op de onbehaarde huid geeft ook jeuk, roodheid en schilfering. Deze schilfering is vaak wat gelig van kleur en doet wasachtig/vettig aan. De jeuk bij seborrhoïsch eczeem is meestal milder dan bij andere vormen van eczeem, maar de verschijnselen kunnen cosmetisch erg storend zijn.");
+        Diagnose diagnose4 = new Diagnose("‘Roos’ is de mildste vorm van seborrhoïsch eczeem, Er zijn dan fijne schilfertjes op het behaarde hoofd, waarbij er ook jeuk is. In een ernstigere vorm wordt de hoofdhuid rood en neem de schilfering toe. Seborrhoïsch eczeem op de onbehaarde huid geeft ook jeuk, roodheid en schilfering. Deze schilfering is vaak wat gelig van kleur en doet wasachtig/vettig aan. De jeuk bij seborrhoïsch eczeem is meestal milder dan bij andere vormen van eczeem, maar de verschijnselen kunnen cosmetisch erg storend zijn.", "Picosulfaat");
         diagnoses.add(diagnose4);
-        Diagnose diagnose5 = new Diagnose("Alopecia areata treedt meestal plotseling op. In ernstige gevallen valt het haar met grote plukken uit. Meestal zijn er alleen kale plekken op de hoofdhuid. Hoe de ziekte verloopt, is erg onvoorspelbaar. In de meeste gevallen gaat het haar spontaan weer groeien binnen enkele maanden tot jaren.");
+        Diagnose diagnose5 = new Diagnose("Alopecia areata treedt meestal plotseling op. In ernstige gevallen valt het haar met grote plukken uit. Meestal zijn er alleen kale plekken op de hoofdhuid. Hoe de ziekte verloopt, is erg onvoorspelbaar. In de meeste gevallen gaat het haar spontaan weer groeien binnen enkele maanden tot jaren.", "Ultacit");
         diagnoses.add(diagnose5);
-        Diagnose diagnose6 = new Diagnose("Als er door de haaruitval duidelijke kale plekken op de hoofdhuid ontstaan, is het gemakkelijk om de diagnose te stellen. Dat is moeilijker als de haren gelijkmatig verspreid uitvallen. Soms is het nodig de haarwortels en/of huidweefsel in het laboratorium te onderzoeken. Op die manier wordt duidelijk of het om alopecia areata gaat, of om een andere aandoening. Omdat andere auto-immuunziekten, zoals bijvoorbeeld schildklierziekten, vaker voorkomen bij mensen met alopecia areata, wordt bloedonderzoek gedaan.");
+        Diagnose diagnose6 = new Diagnose("Als er door de haaruitval duidelijke kale plekken op de hoofdhuid ontstaan, is het gemakkelijk om de diagnose te stellen. Dat is moeilijker als de haren gelijkmatig verspreid uitvallen. Soms is het nodig de haarwortels en/of huidweefsel in het laboratorium te onderzoeken. Op die manier wordt duidelijk of het om alopecia areata gaat, of om een andere aandoening. Omdat andere auto-immuunziekten, zoals bijvoorbeeld schildklierziekten, vaker voorkomen bij mensen met alopecia areata, wordt bloedonderzoek gedaan.", "Wartec");
         diagnoses.add(diagnose6);
-        Diagnose diagnose7 = new Diagnose("Het belangrijkste kenmerk van constitutioneel eczeem is hevige jeuk. Verdere is de huid rood en schilferig, met kleine bultjes. Ook kunnen blaasjes ontstaan en waaruit vocht kan komen. De hele huid is droog en kan ruw aanvoelen. Door de jeuk kunnen krabwondjes ontstaan. Als het eczeem langere tijd bestaat, kunnen er ruwe en verdikte plekken op de huid ontstaan.");
+        Diagnose diagnose7 = new Diagnose("Het belangrijkste kenmerk van constitutioneel eczeem is hevige jeuk. Verdere is de huid rood en schilferig, met kleine bultjes. Ook kunnen blaasjes ontstaan en waaruit vocht kan komen. De hele huid is droog en kan ruw aanvoelen. Door de jeuk kunnen krabwondjes ontstaan. Als het eczeem langere tijd bestaat, kunnen er ruwe en verdikte plekken op de huid ontstaan.", "Tambocor");
         diagnoses.add(diagnose7);
-        Diagnose diagnose8 = new Diagnose("De dermatoloog stelt de diagnose door de huid te bekijken en te vragen naar de jeuk. Ook zal de dermatoloog u vragen of er familieleden zijn met eczeem, astma of allergieën.");
+        Diagnose diagnose8 = new Diagnose("De dermatoloog stelt de diagnose door de huid te bekijken en te vragen naar de jeuk. Ook zal de dermatoloog u vragen of er familieleden zijn met eczeem, astma of allergieën.", "Tasigna");
         diagnoses.add(diagnose8);
         Diagnose diagnose9 = new Diagnose("");
         diagnoses.add(diagnose9);

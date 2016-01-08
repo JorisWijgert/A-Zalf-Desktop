@@ -29,6 +29,11 @@ public class Diagnose {
         this.reminders = new ArrayList();
     }
     
+    public Diagnose(String beschrijving, String prescriptie){
+        this.beschrijving = beschrijving;
+        this.prescriptie = prescriptie;
+    }
+    
     public Diagnose(String beschrijving, String qrCode, ArrayList<Date> reminders, String prescriptie) {
         this.beschrijving = beschrijving;
         this.qrCode = qrCode;
@@ -38,6 +43,10 @@ public class Diagnose {
     
     public void setReminders(ArrayList<Date> reminders) {
         this.reminders = reminders;
+    }
+    
+    public String getPrescriptie(){
+        return this.prescriptie;
     }
     
     @Override
