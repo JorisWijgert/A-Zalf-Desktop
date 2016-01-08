@@ -41,7 +41,10 @@
       <ImageView id="ivFotoVeraf" fx:id="ivFotoVeraf" fitHeight="114.0" fitWidth="171.0" layoutX="568.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true" />
       <Button id="btVolgende" fx:id="btVolgende" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" onMouseClicked="#volgendePatient" text="Volgende Patiënt" />
       <Button id="btVerstuur" fx:id="btVerstuur" layoutX="1085.0" layoutY="652.0" mnemonicParsing="false" onMouseClicked="#verstuur" text="Verstuur" />
-      <ImageView fx:id="ivLogo" fitHeight="77.0" fitWidth="71.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ivLogo" fitHeight="77.0" fitWidth="71.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recourses/logo2.png" />
+         </image></ImageView>
       <Label fx:id="lbVolgendeAfspraak" layoutX="918.0" layoutY="165.0">
          <font>
             <Font size="20.0" />
@@ -67,7 +70,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="101.0" layoutY="63.0" text="A-Zalf" textFill="#1562b3">
+      <Label layoutX="97.0" layoutY="53.0" text="A-Zalf" textFill="#1562b3">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
