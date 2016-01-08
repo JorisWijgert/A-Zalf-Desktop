@@ -8,7 +8,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1179.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FX.OverzichtController">
    <children>
-      <ListView id="lvAfspraken" fx:id="lvAfspraken" layoutX="26.0" layoutY="149.0" prefHeight="363.0" prefWidth="290.0" />
+      <TextArea disable="true" layoutX="789.0" layoutY="223.0" prefHeight="463.0" prefWidth="380.0" />
+      <ListView id="lvAfspraken" fx:id="lvAfspraken" layoutX="26.0" layoutY="149.0" prefHeight="333.0" prefWidth="290.0" />
       <Label layoutX="113.0" layoutY="105.0" text="Afspraken">
          <font>
             <Font size="24.0" />
@@ -20,17 +21,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea id="taVolgendeAfspraak" fx:id="taVolgendeAfspraak" layoutX="794.0" layoutY="149.0" prefHeight="60.0" prefWidth="354.0">
+      <TextArea id="taVolgendeAfspraak" fx:id="taVolgendeAfspraak" layoutX="804.0" layoutY="149.0" prefHeight="60.0" prefWidth="354.0">
          <font>
             <Font size="24.0" />
          </font></TextArea>
-      <Label layoutX="869.0" layoutY="106.0" prefHeight="29.0" prefWidth="219.0" text="Volgende afspraak">
+      <Label layoutX="879.0" layoutY="106.0" prefHeight="29.0" prefWidth="219.0" text="Volgende afspraak">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextArea id="taDiagnose" fx:id="taDiagnose" layoutX="801.0" layoutY="271.0" prefHeight="377.0" prefWidth="354.0" wrapText="true" />
-      <Label layoutX="923.0" layoutY="226.0" prefHeight="29.0" prefWidth="116.0" text="Diagnose">
+      <TextArea id="taDiagnose" fx:id="taDiagnose" layoutX="802.0" layoutY="267.0" prefHeight="215.0" prefWidth="354.0" wrapText="true" />
+      <Label layoutX="931.0" layoutY="226.0" prefHeight="29.0" prefWidth="116.0" text="Diagnose">
          <font>
             <Font size="24.0" />
          </font>
@@ -39,27 +40,44 @@
       <ImageView id="ivFotoDichtbij" fx:id="ivFotoDichtbij" fitHeight="121.0" fitWidth="171.0" layoutX="370.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView id="ivFotoVeraf" fx:id="ivFotoVeraf" fitHeight="114.0" fitWidth="171.0" layoutX="568.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true" />
       <Button id="btVolgende" fx:id="btVolgende" layoutX="193.0" layoutY="652.0" mnemonicParsing="false" onMouseClicked="#volgendePatient" text="Volgende Patiënt" />
-      <Button id="btVerstuur" fx:id="btVerstuur" layoutX="1084.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#verstuur" text="Verstuur" />
-      <ImageView fx:id="ivLogo" fitHeight="84.0" fitWidth="77.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Button id="btVerstuur" fx:id="btVerstuur" layoutX="1085.0" layoutY="652.0" mnemonicParsing="false" onMouseClicked="#verstuur" text="Verstuur" />
+      <ImageView fx:id="ivLogo" fitHeight="77.0" fitWidth="71.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="lbVolgendeAfspraak" layoutX="918.0" layoutY="165.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextArea id="taVolgendeAfspraak" fx:id="taVolgendeAfspraak1" layoutX="26.0" layoutY="577.0" prefHeight="60.0" prefWidth="290.0">
+      <TextArea id="taVolgendeAfspraak" fx:id="taVolgendeAfspraak1" layoutX="26.0" layoutY="551.0" prefHeight="60.0" prefWidth="290.0">
          <font>
             <Font size="24.0" />
          </font>
       </TextArea>
-      <Label layoutX="85.0" layoutY="536.0" text="Huidige patiënt">
+      <Label layoutX="85.0" layoutY="506.0" text="Huidige patiënt">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lbHuidigePatient" layoutX="75.0" layoutY="594.0" prefHeight="26.0" prefWidth="192.0">
+      <Label fx:id="lbHuidigePatient" layoutX="75.0" layoutY="568.0" prefHeight="26.0" prefWidth="192.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
+      <Label fx:id="lbWelkomArts" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="902.0" layoutY="14.0" prefHeight="22.0" prefWidth="246.0" text="Welkom, " textAlignment="RIGHT">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="122.0" layoutY="39.0" text="A-Zalf" textFill="#1562b3">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="911.0" layoutY="506.0" prefHeight="29.0" prefWidth="136.0" text="Prescriptie">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField alignment="CENTER" layoutX="804.0" layoutY="555.0" prefHeight="27.0" prefWidth="354.0" promptText="Medicatiemiddel" />
+      <TextField alignment="CENTER" layoutX="802.0" layoutY="606.0" prefHeight="27.0" prefWidth="354.0" promptText="Inname medicatie" />
    </children>
 </AnchorPane>
