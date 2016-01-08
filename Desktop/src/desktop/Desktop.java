@@ -5,6 +5,7 @@
  */
 package desktop;
 
+import FX.OverzichtController;
 import collection.Administratie;
 import java.io.IOException;
 import javafx.application.Application;
@@ -29,7 +30,8 @@ public class Desktop extends Application {
         primaryStage.setTitle("Overzicht");
         primaryStage.setScene(scene);
         primaryStage.show();
-        Administratie administratie = new Administratie();
+        OverzichtController controller = new OverzichtController();
+        //Administratie administratie = new Administratie();
     }
 
     /**

@@ -14,13 +14,15 @@ import java.util.Date;
  */
 public class Patient {
     
-    private String naam;
+    private String achternaam;
+    private String voornaam;
     private Date geboorteDatum;
     private int patientNummer;
     private ArrayList<Afspraak> agenda;
     
-    public Patient(String naam, Date geboorteDatum, int patientNummer) {
-        this.naam = naam;
+    public Patient(String voornaam, String achternaam, Date geboorteDatum, int patientNummer) {
+        this.voornaam = voornaam;
+        this.achternaam = achternaam;
         this.geboorteDatum = geboorteDatum;
         this.patientNummer = patientNummer;
         this.agenda = new ArrayList();
@@ -34,8 +36,12 @@ public class Patient {
         }
     }
     
-    public String getNaam() {
-        return this.naam;
+    public String getVoornaam() {
+        return this.voornaam;
+    }
+    
+    public String getAchternaam(){
+        return this.achternaam;
     }
     
     public Date getGeboorteDatum() {
@@ -47,6 +53,6 @@ public class Patient {
     }
     
     public String toString() {
-        return String.valueOf(this.patientNummer + " " + this.naam + " " + this.geboorteDatum);
+        return String.valueOf(this.patientNummer + " - " + this.achternaam + " " + this.voornaam);
     }
 }

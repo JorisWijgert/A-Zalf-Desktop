@@ -129,49 +129,55 @@ public class OverzichtController implements Initializable {
     }
 
     private void vulAllePatienten() {
-        Patient patient0 = new Patient("Piet Fransen", new Date(23 - 02 - 1964), 11923);
+        Patient patient0 = new Patient("Piet", "Fransen", new Date(1964, 6, 20, 0, 0), 11923);
         patienten.add(patient0);
-        Patient patient1 = new Patient("Sjaak Teeven", new Date(11 - 02 - 1965), 73645);
+        Patient patient1 = new Patient("Sjaak", "Teeven", new Date(1965, 2, 11, 0, 0), 73645);
         patienten.add(patient1);
-        Patient patient2 = new Patient("Fritz Pok", new Date(12 - 03 - 1966), 12543);
+        Patient patient2 = new Patient("Fritz", "Pok", new Date(1966, 3, 12, 0, 0), 12543);
         patienten.add(patient2);
-        Patient patient3 = new Patient("Thea Driesen", new Date(13 - 04 - 1967), 68432);
+        Patient patient3 = new Patient("Thea", "Driesen", new Date(1967, 4, 12, 0, 0), 68432);
         patienten.add(patient3);
-        Patient patient4 = new Patient("Theodora Navis", new Date(14 - 05 - 1968), 59080);
+        Patient patient4 = new Patient("Theodora", "Navis", new Date(1968, 5, 14, 0, 0), 59080);
         patienten.add(patient4);
-        Patient patient5 = new Patient("Bea Kippens", new Date(15 - 06 - 1969), 86756);
+        Patient patient5 = new Patient("Bea", "Kippens", new Date(1969, 6, 15, 0, 0), 86756);
         patienten.add(patient5);
-        Patient patient6 = new Patient("Truus Dekker", new Date(16 - 07 - 1963), 25701);
+        Patient patient6 = new Patient("Truus", "Dekker", new Date(1963, 7, 16, 0, 0), 25701);
         patienten.add(patient6);
-        Patient patient7 = new Patient("Sjra Lanken", new Date(17 - 8 - 1962), 24312);
+        Patient patient7 = new Patient("Sjra", "Lanken", new Date(1962, 8, 17, 0, 0), 24312);
         patienten.add(patient7);
-        Patient patient8 = new Patient("Andre Duisters", new Date(18 - 9 - 1961), 46347);
+        Patient patient8 = new Patient("Andre", "Duisters", new Date(1961, 9, 18, 0, 0), 46347);
         patienten.add(patient8);
-        Patient patient9 = new Patient("Jac Mensens", new Date(19 - 10 - 1960), 74523);
+        Patient patient9 = new Patient("Jac", "Mensens", new Date(1960, 10, 19, 0, 0), 74523);
         patienten.add(patient9);
     }
 
     private void vulAlleInformatie() {
-        Informatie informatie0 = new Informatie("De patiënt heeft last van: \n- Wratten op de tenen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 4 dagen");
+        int i = 0;
+        Informatie informatie0 = new Informatie(getPatient(i).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() +"\n\nDe patiënt heeft last van: \n- Wratten op de tenen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 4 dagen");
         informaties.add(informatie0);
-        Informatie informatie1 = new Informatie("De patiënt heeft last van: \n- Galbulten op de rug. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 15 dagen");
+        Informatie informatie1 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Galbulten op de rug. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 15 dagen");
         informaties.add(informatie1);
-        Informatie informatie2 = new Informatie("De patiënt heeft last van: \n- Spataderen op de onderarmen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 40 dagen");
+        Informatie informatie2 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Spataderen op de onderarmen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 40 dagen");
         informaties.add(informatie2);
-        Informatie informatie3 = new Informatie("De patiënt heeft last van: \n- Schimmelinfecties tussen de vingers. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 12 dagen");
+        Informatie informatie3 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Schimmelinfecties tussen de vingers. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 12 dagen");
         informaties.add(informatie3);
-        Informatie informatie4 = new Informatie("De patiënt heeft last van: \n- Eczeem in de hals en op de elleboog. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 2 dagen");
+        Informatie informatie4 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Eczeem in de hals en op de elleboog. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 2 dagen");
         informaties.add(informatie4);
-        Informatie informatie5 = new Informatie("De patiënt heeft last van: \n- Moedervlekken op de neus. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 23 dagen");
+        Informatie informatie5 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Moedervlekken op de neus. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 23 dagen");
         informaties.add(informatie5);
-        Informatie informatie6 = new Informatie("De patiënt heeft last van: \n- Zonbeschadeging op de buik. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 12 dagen");
+        Informatie informatie6 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Zonbeschadeging op de buik. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 12 dagen");
         informaties.add(informatie6);
-        Informatie informatie7 = new Informatie("De patiënt heeft last van: \n- Ouderdomswratten op de knokkels van de linker hand. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 36 dagen");
+        Informatie informatie7 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Ouderdomswratten op de knokkels van de linker hand. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 36 dagen");
         informaties.add(informatie7);
-        Informatie informatie8 = new Informatie("De patiënt heeft last van: \n- Psoriasis op de knieën. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 7 dagen");
+        Informatie informatie8 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Psoriasis op de knieën. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 7 dagen");
         informaties.add(informatie8);
-        Informatie informatie9 = new Informatie("De patiënt heeft last van: \n- Wratten op de handen en voeten. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 17 dagen");
+        Informatie informatie9 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de handen en voeten. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 17 dagen");
         informaties.add(informatie9);
+    }
+    
+    private Patient getPatient(int i){
+        Patient patient = patienten.get(i);
+        return patient;
     }
 
     private void vulAlleDiagnoses() {

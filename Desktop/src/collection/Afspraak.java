@@ -60,6 +60,6 @@ public class Afspraak {
 
     @Override
     public String toString() {
-        return this.getPatient().getNaam();
+        return this.getPatient().toString();
     }
 }
