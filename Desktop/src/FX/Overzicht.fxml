@@ -80,7 +80,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="804.0" layoutY="555.0" prefHeight="27.0" prefWidth="354.0" promptText="Medicatiemiddel" />
-      <TextField alignment="CENTER" layoutX="802.0" layoutY="606.0" prefHeight="27.0" prefWidth="354.0" promptText="Inname medicatie" />
+      <TextField fx:id="tfPrescriptie" alignment="CENTER" layoutX="804.0" layoutY="555.0" prefHeight="27.0" prefWidth="354.0" promptText="Medicatiemiddel" />
+      <TextField fx:id="tfInnameMedicatie" alignment="CENTER" layoutX="802.0" layoutY="606.0" prefHeight="27.0" prefWidth="354.0" promptText="Inname medicatie" />
    </children>
 </AnchorPane>
