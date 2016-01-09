@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  */
 public class Desktop extends Application {
 
-    private String fxml = "FX/Overzicht.fxml";
+    private String fxml = "/FX/Overzicht.fxml";
 
     @Override
     public void start(Stage primaryStage) throws IOException {
