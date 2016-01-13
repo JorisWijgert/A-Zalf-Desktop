@@ -38,7 +38,7 @@ import network.ServerConnection;
  * @author Ramon
  */
 public class OverzichtController implements Initializable {
-
+    
     @FXML
     private ListView lvAfspraken = new ListView();
     @FXML
@@ -47,44 +47,44 @@ public class OverzichtController implements Initializable {
     private TextArea taVolgendeAfspraak;
     @FXML
     private TextArea taDiagnose;
-
+    
     @FXML
     private ImageView ivFotoDichtbij = new ImageView();
     @FXML
     private ImageView ivFotoVeraf = new ImageView();
     @FXML
     private ImageView ivLogo;
-
+    
     @FXML
     private Label lbVolgendeAfspraak;
     @FXML
     private Label lbHuidigePatient;
     @FXML
     private Label lbWelkomArts;
-
+    
     @FXML
     private TextField tfPrescriptie;
     @FXML
     private TextField tfInnameMedicatie;
-
+    
     @FXML
     private Button btVolgende;
     @FXML
     private Button btVerstuur;
-
+    
     private ArrayList<Afspraak> afsprakenArray = new ArrayList<>();
     private ObservableList<Afspraak> afsprakenObservable = FXCollections.observableArrayList(afsprakenArray);
     private ArrayList<Patient> patienten = new ArrayList<>();
     private ArrayList<Informatie> informaties = new ArrayList<>();
     private ArrayList<Diagnose> diagnoses = new ArrayList<>();
-
+    
     private Arts arts;
     private Afspraak geselecteerdeAfspraak;
     private int indexHuidigeAfspraak = 7;
     ServerConnection connection;
-
+    
     private boolean eersteKeer = true;
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         arts = new Arts("Theodore", "1");
@@ -92,24 +92,24 @@ public class OverzichtController implements Initializable {
         this.vulAlleInformatie();
         this.vulAlleDiagnoses();
         this.vulAlleAfspraken();
-
+        
         try {
             this.connection = new ServerConnection();
         } catch (IOException ex) {
             Logger.getLogger(OverzichtController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         lbWelkomArts.setText("Welkom, " + arts.getNaam());
         ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
         ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
-
+        
         ivLogo.setImage(new Image("/recourses/logo2.png"));
         lbVolgendeAfspraak.setText("10 Minuten");
-
+        
         lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
-
+        
         lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " - " + patienten.get(indexHuidigeAfspraak).getAchternaam() + ", " + patienten.get(indexHuidigeAfspraak).getVoornaam());
-
+        
         lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>() {
             @Override
             public void changed(ObservableValue<? extends Afspraak> observable, Afspraak oldValue, Afspraak newValue) {
@@ -117,7 +117,8 @@ public class OverzichtController implements Initializable {
                 taInformatie.setText(geselecteerdeAfspraak.getInformatie().toString());
                 taDiagnose.setText(geselecteerdeAfspraak.getDiagnose().toString());
                 tfPrescriptie.setText(geselecteerdeAfspraak.getDiagnose().getPrescriptie());
-
+                tfInnameMedicatie.setText(geselecteerdeAfspraak.getDiagnose().getInname());
+                
                 if ((lvAfspraken.getSelectionModel().getSelectedIndex() % 2) == 0) {
                     ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
                     ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
@@ -127,30 +128,36 @@ public class OverzichtController implements Initializable {
                 }
             }
         });
-
+        
         volgendePatient();
     }
-
+    
     public void setIvFotoDichtbij(Image ivFotoDichtbij) {
         this.ivFotoDichtbij.setImage(ivFotoDichtbij);
     }
-
+    
     public void setIvFotoVeraf(Image ivFotoVeraf) {
         this.ivFotoVeraf.setImage(ivFotoVeraf);
     }
-
+    
     public void laatAfsprakenInLijstZien() {
         lvAfspraken.getItems().setAll(FXCollections.observableArrayList(afsprakenArray));
     }
-
+    
     @FXML
     public void volgendePatient() {
+        
+        if (eersteKeer == false) {
+            Diagnose diagnose = new Diagnose(taDiagnose.getText(), tfInnameMedicatie.getText(), tfPrescriptie.getText());
+            geselecteerdeAfspraak.setDiagnose(diagnose);
+        }
+        
         indexHuidigeAfspraak++;
         if (indexHuidigeAfspraak >= lvAfspraken.getItems().size()) {
             System.out.println("Geen afspraken meer!");
         } else {
             if ((indexHuidigeAfspraak) < afsprakenArray.size()) {
-
+                
                 lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
                 if ((indexHuidigeAfspraak % 2) == 0) {
                     ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
@@ -165,7 +172,8 @@ public class OverzichtController implements Initializable {
             System.out.println("Volgende patiënt!");
             lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " - " + patienten.get(indexHuidigeAfspraak).getAchternaam() + ", " + patienten.get(indexHuidigeAfspraak).getVoornaam());
             tfPrescriptie.setText(geselecteerdeAfspraak.getDiagnose().getPrescriptie());
-
+            tfInnameMedicatie.setText(geselecteerdeAfspraak.getDiagnose().getInname());
+            
             if (eersteKeer == false) {
                 connection.sendPatientNumber(getPatient(lvAfspraken.getSelectionModel().getSelectedIndex()).getPatientNummer());
             }
@@ -173,13 +181,13 @@ public class OverzichtController implements Initializable {
             eersteKeer = false;
         }
     }
-
+    
     @FXML
     public void verstuur() {
         geselecteerdeAfspraak.setDiagnose(new Diagnose(taDiagnose.getText()));
         System.out.println("Diagnose verstuurd!");
     }
-
+    
     private void vulAllePatienten() {
         Patient patient0 = new Patient("Piet", "Fransen", new Date(1964, 6, 20, 0, 0), 11923);
         patienten.add(patient0);
@@ -218,7 +226,7 @@ public class OverzichtController implements Initializable {
         Patient patient17 = new Patient("Samsom", "Roberts", new Date(1957, 9, 11, 0, 0), 43432);
         patienten.add(patient17);
     }
-
+    
     private void vulAlleInformatie() {
         int i = 0;
         Informatie informatie0 = new Informatie(getPatient(i).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de tenen. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 4 dagen");
@@ -258,12 +266,12 @@ public class OverzichtController implements Initializable {
         Informatie informatie17 = new Informatie(getPatient(i++).getPatientNummer() + " " + getPatient(i).getAchternaam() + " " + getPatient(i).getVoornaam() + " " + getPatient(i).getGeboorteDatum().getYear() + "\n\nDe patiënt heeft last van: \n- Wratten op de handen en voeten. \n\n De aantal dagen dat de patiënt er al last van heeft: \n- 17 dagen");
         informaties.add(informatie17);
     }
-
+    
     private Patient getPatient(int i) {
         Patient patient = patienten.get(i);
         return patient;
     }
-
+    
     private void vulAlleDiagnoses() {
         Diagnose diagnose0 = new Diagnose("De klachten verdwijnen meestal vanzelf binnen enige dagen tot weken. Voorkom krabben of wrijven. Was de huid goed met water. Ogen kunt u met water uitspoelen. Om verdere verspreiding van de brandharen over het lichaam te voorkomen en om de ontstekingsreactie tegen te gaan is het zinvol de huid direct na de blootstelling met plakband te strippen, om zo alle brandharen te verwijderen. Bij lichte klachten zijn geen medicijnen nodig. Bij hevige jeuk kunnen anti-jeuk middelen helpen, zoals een crème op basis van menthol, aloë vera of calendula. Deze middelen zijn verkrijgbaar bij apotheek of drogist. Bij aanhoudend ernstige klachten kunt u contact opnemen met uw huisarts.", "Bactroban");
         diagnoses.add(diagnose0);
@@ -304,11 +312,11 @@ public class OverzichtController implements Initializable {
         Diagnose diagnose17 = new Diagnose("");
         diagnoses.add(diagnose17);
     }
-
+    
     private void vulAlleAfspraken() {
-
+        
         Afspraak afspraak;
-
+        
         for (int i = 0; i < 17; i++) {
             Patient patient = patienten.get(i);
             Informatie informatie = informaties.get(i);
