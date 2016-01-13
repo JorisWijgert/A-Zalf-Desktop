@@ -16,38 +16,53 @@ import java.net.Socket;
  * @author brunodelsing
  */
 public class ServerConnection {
-    
+
     private final int PORT = 8888;
     private ServerSocket serverSocket;
     private Socket socket;
-    
+
     private String text;
     private Object obj;
-    
+    private int number;
+
     private DataOutputStream dataOutputStream;
-    
+
+    private boolean isOpen = true;
+
     public ServerConnection() throws IOException {
         serverSocket = new ServerSocket(8888);
+        System.out.println("Listening on port:" + PORT);
     }
-    
+
     public void sendText(String text) {
         this.text = text;
-        this.send();
+        isOpen = true;
+        this.send("Text");
     }
-    
+
+    public void sendPatientNumber(int number) {
+        this.number = number;
+        isOpen = true;
+        this.send("Number");
+    }
+
     public void sendObject(Object obj) {
         this.obj = obj;
-        this.send();
+        this.send("Object");
     }
-    
-    private void send() {
-        while (true) {
+
+    private void send(String type) {
+        while (isOpen) {
             try {
-                System.out.println("Listening on port:" + PORT);
                 socket = serverSocket.accept();
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 System.out.println("ip: " + socket.getInetAddress());
-                dataOutputStream.writeUTF(text);
+
+                if (type.equals("Number")) {
+                    dataOutputStream.writeInt(number);
+                } else if (type.equals("Text")) {
+                    dataOutputStream.writeUTF(text);
+                }
                 System.out.println("send");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -55,6 +70,7 @@ public class ServerConnection {
                 if (socket != null) {
                     try {
                         socket.close();
+                        isOpen = false;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -70,8 +86,7 @@ public class ServerConnection {
                 }
             }
         }
-        
+
     }
-    
-    
+
 }

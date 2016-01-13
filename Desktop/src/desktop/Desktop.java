@@ -24,7 +24,8 @@ public class Desktop extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
+        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
+        Parent root = FXMLLoader.load(getClass().getResource("/FX/Overzicht.fxml"));
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("A-Zalf Desktop");

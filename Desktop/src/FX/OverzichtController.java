@@ -10,10 +10,13 @@ import Collection.Arts;
 import Collection.Diagnose;
 import Collection.Informatie;
 import Collection.Patient;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -28,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
+import network.ServerConnection;
 
 /**
  *
@@ -76,7 +80,10 @@ public class OverzichtController implements Initializable {
 
     private Arts arts;
     private Afspraak geselecteerdeAfspraak;
-    private int indexHuidigeAfspraak = 9;
+    private int indexHuidigeAfspraak = 7;
+    ServerConnection connection;
+
+    private boolean eersteKeer = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,6 +93,12 @@ public class OverzichtController implements Initializable {
         this.vulAlleDiagnoses();
         this.vulAlleAfspraken();
 
+        try {
+            this.connection = new ServerConnection();
+        } catch (IOException ex) {
+            Logger.getLogger(OverzichtController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         lbWelkomArts.setText("Welkom, " + arts.getNaam());
         ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij2.jpg"));
         ivFotoVeraf.setImage(new Image("/recourses/Veraf2.jpg"));
@@ -94,7 +107,8 @@ public class OverzichtController implements Initializable {
         lbVolgendeAfspraak.setText("10 Minuten");
 
         lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
-        lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
+
+        lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " - " + patienten.get(indexHuidigeAfspraak).getAchternaam() + ", " + patienten.get(indexHuidigeAfspraak).getVoornaam());
 
         lvAfspraken.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Afspraak>() {
             @Override
@@ -103,7 +117,7 @@ public class OverzichtController implements Initializable {
                 taInformatie.setText(geselecteerdeAfspraak.getInformatie().toString());
                 taDiagnose.setText(geselecteerdeAfspraak.getDiagnose().toString());
                 tfPrescriptie.setText(geselecteerdeAfspraak.getDiagnose().getPrescriptie());
-                
+
                 if ((lvAfspraken.getSelectionModel().getSelectedIndex() % 2) == 0) {
                     ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
                     ivFotoVeraf.setImage(new Image("/recourses/Veraf.jpg"));
@@ -113,6 +127,8 @@ public class OverzichtController implements Initializable {
                 }
             }
         });
+
+        volgendePatient();
     }
 
     public void setIvFotoDichtbij(Image ivFotoDichtbij) {
@@ -134,6 +150,7 @@ public class OverzichtController implements Initializable {
             System.out.println("Geen afspraken meer!");
         } else {
             if ((indexHuidigeAfspraak) < afsprakenArray.size()) {
+
                 lvAfspraken.getSelectionModel().select(indexHuidigeAfspraak);
                 if ((indexHuidigeAfspraak % 2) == 0) {
                     ivFotoDichtbij.setImage(new Image("/recourses/Dichtbij.jpg"));
@@ -146,8 +163,14 @@ public class OverzichtController implements Initializable {
                 System.out.println("Geen patiënten meer!");
             }
             System.out.println("Volgende patiënt!");
-            lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " " + patienten.get(indexHuidigeAfspraak).getAchternaam() + " " + patienten.get(indexHuidigeAfspraak).getVoornaam());
+            lbHuidigePatient.setText(patienten.get(indexHuidigeAfspraak).getPatientNummer() + " - " + patienten.get(indexHuidigeAfspraak).getAchternaam() + ", " + patienten.get(indexHuidigeAfspraak).getVoornaam());
             tfPrescriptie.setText(geselecteerdeAfspraak.getDiagnose().getPrescriptie());
+
+            if (eersteKeer == false) {
+                connection.sendPatientNumber(getPatient(lvAfspraken.getSelectionModel().getSelectedIndex()).getPatientNummer());
+            }
+            
+            eersteKeer = false;
         }
     }
 
