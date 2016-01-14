@@ -3,35 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package desktop;
+package a.zalftv;
 
-import FX.OverzichtController;
-import collection.Administratie;
+import a.zalftv.FX.TVController;
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author Ramon
  */
-public class Desktop extends Application {
-
-    private String fxml = "/FX/Overzicht.fxml";
+public class AZalfTV extends Application {
+    
+private String fxml = "FX/TV.fxml";
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
-        Parent root = FXMLLoader.load(getClass().getResource("/FX/Overzicht.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource(fxml));
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("A-Zalf Desktop");
+        primaryStage.setTitle("Overzicht");
         primaryStage.setScene(scene);
         primaryStage.show();
-        OverzichtController controller = new OverzichtController();
+        TVController controller = new TVController();
         //Administratie administratie = new Administratie();
     }
 
@@ -41,4 +43,5 @@ public class Desktop extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
 }

@@ -12,15 +12,17 @@ import java.util.Date;
  * @author brunodelsing
  */
 public class Afspraak {
-    
+
     private Date tijdstip, tijdsduur;
-    
+
     private Patient patient;
     private Arts arts;
-    
+
     private Informatie informatie;
     private Diagnose diagnose;
-    
+    private String prescriptie;
+    private String inname;
+
     public Afspraak(Patient patient, Arts arts, Informatie informatie, Date tijdstip, Date tijdsduur) {
         this.patient = patient;
         this.arts = arts;
@@ -29,7 +31,7 @@ public class Afspraak {
         this.informatie = informatie;
         this.diagnose = null;
     }
-    
+
     public Date getTijdstip() {
         return tijdstip;
     }
@@ -49,12 +51,33 @@ public class Afspraak {
     public Informatie getInformatie() {
         return informatie;
     }
-    
+
     public void setDiagnose(Diagnose diagnose) {
         this.diagnose = diagnose;
     }
-    
+
     public Diagnose getDiagnose() {
         return diagnose;
+    }
+
+    public void setPrescriptie(String prescriptie) {
+        this.prescriptie = prescriptie;
+    }
+
+    public String getPrescriptie() {
+        return this.prescriptie;
+    }
+
+    public void setInname(String inname) {
+        this.inname = inname;
+    }
+
+    public String getInname() {
+        return this.inname;
+    }
+
+    @Override
+    public String toString() {
+        return this.getPatient().toString();
     }
 }
