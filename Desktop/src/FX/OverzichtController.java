@@ -185,6 +185,8 @@ public class OverzichtController implements Initializable {
     @FXML
     public void verstuur() {
         geselecteerdeAfspraak.setDiagnose(new Diagnose(taDiagnose.getText()));
+        geselecteerdeAfspraak.getDiagnose().setPrescriptie(tfPrescriptie.getText());
+        geselecteerdeAfspraak.getDiagnose().setInname(tfInnameMedicatie.getText());
         System.out.println("Diagnose verstuurd!");
     }
     

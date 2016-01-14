@@ -21,6 +21,7 @@ public class Afspraak {
     private Informatie informatie;
     private Diagnose diagnose;
     private String prescriptie;
+    private String inname;
 
     public Afspraak(Patient patient, Arts arts, Informatie informatie, Date tijdstip, Date tijdsduur) {
         this.patient = patient;
@@ -58,13 +59,21 @@ public class Afspraak {
     public Diagnose getDiagnose() {
         return diagnose;
     }
-    
-    public void setPrescriptie(String prescriptie){
+
+    public void setPrescriptie(String prescriptie) {
         this.prescriptie = prescriptie;
     }
-    
-    public String getPrescriptie(){
+
+    public String getPrescriptie() {
         return this.prescriptie;
+    }
+
+    public void setInname(String inname) {
+        this.inname = inname;
+    }
+
+    public String getInname() {
+        return this.inname;
     }
 
     @Override

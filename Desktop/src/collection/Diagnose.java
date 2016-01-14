@@ -58,6 +58,10 @@ public class Diagnose {
     public String getInname() {
         return this.inname;
     }
+    
+    public void setPrescriptie(String prescriptie){
+        this.prescriptie = prescriptie;
+    }
 
     @Override
     public String toString() {
