@@ -175,7 +175,7 @@ public class OverzichtController implements Initializable {
             tfInnameMedicatie.setText(geselecteerdeAfspraak.getDiagnose().getInname());
             
             if (eersteKeer == false) {
-                connection.sendPatientNumber(getPatient(lvAfspraken.getSelectionModel().getSelectedIndex()).getPatientNummer());
+                connection.sendText(String.valueOf(getPatient(lvAfspraken.getSelectionModel().getSelectedIndex()).getPatientNummer()));
             }
             
             eersteKeer = false;
@@ -187,6 +187,8 @@ public class OverzichtController implements Initializable {
         geselecteerdeAfspraak.setDiagnose(new Diagnose(taDiagnose.getText()));
         geselecteerdeAfspraak.getDiagnose().setPrescriptie(tfPrescriptie.getText());
         geselecteerdeAfspraak.getDiagnose().setInname(tfInnameMedicatie.getText());
+        
+        connection.sendText(taDiagnose.getText() + "@" + tfPrescriptie.getText() + "@" + tfInnameMedicatie.getText());
         System.out.println("Diagnose verstuurd!");
     }
     
